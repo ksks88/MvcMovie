@@ -14,6 +14,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
+    <ApplicationInsightsResourceId>/subscriptions/7fcd247a-9ee4-4435-b3c4-9ab25326d279/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/MvcMovie</ApplicationInsightsResourceId>
   </PropertyGroup>
   <ItemGroup>
     <DnxInvisibleContent Include="bower.json" />
