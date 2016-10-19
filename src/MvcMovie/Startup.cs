@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MvcMovie.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MvcMovie
 {
@@ -36,6 +38,8 @@ namespace MvcMovie
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
+            services.AddDbContext<MovieContext>(options=>options.UseSqlServer(Configuration.GetValue<string>("ConnectionString")));
+            //services.AddDbContext<MvcMovie.>
             services.AddMvc();
         }
 
