@@ -1,0 +1,41 @@
+﻿@model MvcMovie.Models.Movie
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<form asp-controller="Movies" asp-action="Add" method="post" class="form-horizontal">
+    <h2>Index</h2>
+    <div class="container">
+
+        <div class="row">
+            <label asp-for="Genre">Genre</label>
+            <select asp-for="Genre">
+                <option value="1">Thriller</option>
+                <option value="2">Commedy</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" type="text" />
+        </div>
+
+        <div class="row">
+            <label asp-for="Published"></label>
+            <input asp-for="Name" type="datetime" />
+        </div>
+
+        <div class="row">
+            <label asp-for="MovieActors">MovieActors</label>
+            <select asp-for="MovieActors">
+                <option value="1">Brad Pitt</option>
+                <option value="2">Angelina Jolie</option>
+                <option value="3">Richard Geere</option>
+            </select>
+        </div>
+
+    </div>
+    <p>
+        <button type="submit" class="btn">Add</button>
+    </p>
+</form>

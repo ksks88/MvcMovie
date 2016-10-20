@@ -38,9 +38,12 @@ namespace MvcMovie
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddDbContext<MovieContext>(options=>options.UseSqlServer(Configuration.GetValue<string>("ConnectionString")));
+            services.AddDbContext<MovieContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            
             //services.AddDbContext<MvcMovie.>
             services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace MvcMovie.Models
 {
@@ -29,8 +30,29 @@ namespace MvcMovie.Models
                 .HasForeignKey(pt => pt.ActorId);
         }
 
+        
+
+        public override EntityEntry<TEntity> Add<TEntity>(TEntity entity)
+        {
+            if (entity is BaseModel)
+            {
+                var baseModelEntity = entity as BaseModel;
+
+                if (baseModelEntity != null)
+                {
+                    baseModelEntity.DateCreated = DateTime.UtcNow;
+                    baseModelEntity.DateUpdated = DateTime.UtcNow;
+
+                    return base.Add<TEntity>(baseModelEntity as TEntity);
+                }
+            }
+            return base.Add<TEntity>(entity);
+        }
+
+        
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Actor> Actors { get; set; }
+        public DbSet<Actor> Genres { get; set; }
     }
 }

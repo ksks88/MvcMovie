@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MvcMovie.Models
 {
-    public class Movie
+    public class Movie : BaseModel
     {
         public int MovieId { get; set; }
 

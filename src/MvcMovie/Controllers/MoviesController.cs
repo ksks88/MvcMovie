@@ -7,15 +7,28 @@ namespace MvcMovie.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly MovieContext _context;
+        private readonly IMovieRepository _movieRepository;
 
-        public MoviesController(MovieContext dbContext)
+        public MoviesController(IMovieRepository dbRepository)
         {
-            _context = dbContext;
+            _movieRepository = dbRepository;
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Movies.ToListAsync());
+            return View(await _movieRepository.GetMovies());
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Add(Movie movie)
+        {
+            _movieRepository.Add(movie);
+            int taskId = await _movieRepository.SaveChangesAsync();
+
+            return View("Index");
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MvcMovie.Models
 {
-    public class MovieActor
+    public class MovieActor : BaseModel
     {
         public int MovieActorId { get; set; }
         public int MovieId { get; set; }
