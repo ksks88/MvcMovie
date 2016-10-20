@@ -12,5 +12,7 @@ namespace MvcMovie.Models
         public DateTime Published { get; set; }
 
         public List<MovieActor> MovieActors { get; set; }
+
+        public Genre Genre { get; set; }
     }
 }
